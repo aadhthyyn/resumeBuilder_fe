@@ -44,7 +44,7 @@ const AllResume = () => {
   const onDeleteClick = async (id) => {
     try {
       let apiResponse = await deleteResume(id);
-      if (apiResponse == 200) {
+      if (apiResponse.status == 200) {
         toast.success("sucessfully deleted");
       } else {
         toast.error("failed to get delete resume");
