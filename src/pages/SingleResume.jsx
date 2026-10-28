@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import { getSingleResume, updateResume } from "../services/Allapi";
+import { getSingleResume, updateResume } from "../services/allAPI";
 import { Box, Button, Grid, MenuItem, TextField } from "@mui/material";
 import { FaFileDownload } from "react-icons/fa";
 import { MdEditDocument } from "react-icons/md";
@@ -101,25 +101,20 @@ const Singleresume = () => {
     });
   };
 
-
-const onUpdateClick = async()=>{
-  try {
-    let apiResponse=await updateResume(id,SingleResume)
-    if(apiResponse.status ==200){
-      toast.success('update successfully')
-      handleClose()
-    }else{
-      toast.error('update failed')
+  const onUpdateClick = async () => {
+    try {
+      let apiResponse = await updateResume(id, SingleResume);
+      if (apiResponse.status == 200) {
+        toast.success("update successfully");
+        handleClose();
+      } else {
+        toast.error("update failed");
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("update failed");
     }
-    
-  } catch (error) {
-    console.log(error)
-    toast.error('update failed')
-    
-  }
-}
-
-
+  };
 
   return (
     <Box>
@@ -132,8 +127,6 @@ const onUpdateClick = async()=>{
           mt: 3,
         }}
       >
-        
-
         <Button onClick={handleOpen} variant="contained">
           <MdEditDocument style={{ marginRight: "8px" }} />
           Edit CV
@@ -417,7 +410,8 @@ const onUpdateClick = async()=>{
             }}
           />
 
-          <Button onClick={onUpdateClick}
+          <Button
+            onClick={onUpdateClick}
             variant="contained"
             onClick={handleClose}
             sx={{
